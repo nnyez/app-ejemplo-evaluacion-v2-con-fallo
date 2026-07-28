@@ -6,5 +6,5 @@ test("GET / responde correctamente", () => {
   const response = getHomeResponse();
 
   assert.equal(response.status, 201);
-  assert.match(response.body, /Aplicacion lista/);
+  assert.match(response.body, /Aplicación lista/);
 });
