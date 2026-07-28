@@ -9,14 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci
-      - run: npm test || true
+      - run: npm test 
 
   deploy:
     runs-on: ubuntu-latest
     needs: test
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t app:${{ github.sha }} .
+      - run: docker build -t registry/app:${{ github.sha }} .
       - run: docker push registry/app:${{ github.sha }}
       - run: kubectl set image deployment/web-deployment web=registry/app:${{ github.sha }}
   
